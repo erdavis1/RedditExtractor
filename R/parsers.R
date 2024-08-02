@@ -1,6 +1,6 @@
 # Parse request URL into a data frame with reference URLs of interest
-parse_request_url <- function(request_url, data_builder, after = NA, data_list = list(), depth=1, max_depth=100) {
-  cat(paste("parsing URLs on page " %+% depth %+% "...\n"))
+parse_request_url <- function(request_url, data_builder, after = NA, data_list = list(), depth=1, max_depth=500) {
+  cat(paste("Erin parsing URLs on page " %+% depth %+% "...\n"))
   json <- url_to_json(request_url %+% (after %||% ""))
   updated_data_list <- json |>
     get_children() |>
