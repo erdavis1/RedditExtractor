@@ -7,6 +7,8 @@ parse_request_url <- function(request_url, data_builder, after = NA, data_list =
     maybe_build(data_builder) |>
     list() |>
     append(data_list)
+  print(json$data$after)
+  
   if(is.null(json$data$after) || depth + 1 > max_depth) updated_data_list else {
     parse_request_url(
       request_url,
