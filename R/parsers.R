@@ -1,13 +1,13 @@
 # Parse request URL into a data frame with reference URLs of interest
 parse_request_url <- function(request_url, data_builder, after = NA, data_list = list(), depth=1, max_depth=500) {
-  cat(paste("Erin parsing URLs on page " %+% depth %+% "...\n"))
+  cat(paste("Erin2 parsing URLs on page " %+% depth %+% "...\n"))
   json <- url_to_json(request_url %+% (after %||% ""))
   updated_data_list <- json |>
     get_children() |>
     maybe_build(data_builder) |>
     list() |>
     append(data_list)
-  print(json$data$after)
+  cat(json$data$after)
   
   if(is.null(json$data$after) || depth + 1 > max_depth) updated_data_list else {
     parse_request_url(
